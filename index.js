@@ -1,0 +1,30 @@
+const dateOfBirth = document.querySelector("#dob");
+const luckyNumber = document.querySelector("#lucky-number");
+const btnCheck = document.querySelector(".btn-check");
+const resultText = document.querySelector(".result");
+
+function sum(date) {
+    var castedDateOfBirth = Number(date.replaceAll("-", ""));
+    var sum = 0;
+    while (castedDateOfBirth > 0) {
+        var rem = castedDateOfBirth % 10;
+        sum = sum + rem;
+        castedDateOfBirth = Math.trunc(castedDateOfBirth/10);
+    }
+    return sum;
+}
+
+btnCheck.addEventListener("click", function checkDateOfBirthIsLucky() {
+    if(luckyNumber.value === ""){
+        resultText.innerText = "Please Enter Your Lucky Number"; 
+    }else{
+        var sumOfDigits = sum(dateOfBirth.value);
+        if(sumOfDigits % Number(luckyNumber.value) === 0){
+            resultText.innerText = "Your Date of Birth is  Lucky"; 
+        }
+        else{
+            resultText.innerText = "Oops! Your Date of Birth is Not Lucky"; 
+        }
+    }
+    
+})
