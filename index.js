@@ -14,10 +14,8 @@ function sum(date) {
     return sum;
 }
 
-btnCheck.addEventListener("click", function checkDateOfBirthIsLucky() {
-    if(luckyNumber.value === ""){
-        resultText.innerText = "Please Enter Your Lucky Number"; 
-    }else{
+function checkDateOfBirthIsLucky(){
+    if(dateOfBirth.value && Number(luckyNumber.value) > 0){
         var sumOfDigits = sum(dateOfBirth.value);
         if(sumOfDigits % Number(luckyNumber.value) === 0){
             resultText.innerText = "Your Date of Birth is  Lucky"; 
@@ -26,5 +24,9 @@ btnCheck.addEventListener("click", function checkDateOfBirthIsLucky() {
             resultText.innerText = "Oops! Your Date of Birth is Not Lucky"; 
         }
     }
-    
-})
+    else{
+        resultText.innerText = "Please fill both the fields"; 
+    }
+}
+
+btnCheck.addEventListener("click", checkDateOfBirthIsLucky)
