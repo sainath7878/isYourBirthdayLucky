@@ -15,14 +15,20 @@ function sum(date) {
 }
 
 function checkDateOfBirthIsLucky(){
-    if(dateOfBirth.value && Number(luckyNumber.value) > 0){
-        var sumOfDigits = sum(dateOfBirth.value);
-        if(sumOfDigits % Number(luckyNumber.value) === 0){
-            resultText.innerText = "Your Date of Birth is  Lucky"; 
+    if(dateOfBirth.value && luckyNumber.value){
+        if(Number(luckyNumber.value > 0)){
+            var sumOfDigits = sum(dateOfBirth.value);
+            if(sumOfDigits % Number(luckyNumber.value) === 0){
+                resultText.innerText = "Yaaayy! Your Date of Birth is  Lucky"; 
+            }
+            else{
+                resultText.innerText = "Oops! Your Date of Birth is Not Lucky"; 
+            }
         }
         else{
-            resultText.innerText = "Oops! Your Date of Birth is Not Lucky"; 
+            resultText.innerText = "Lucky Number must be a postive value."; 
         }
+        
     }
     else{
         resultText.innerText = "Please fill both the fields"; 
